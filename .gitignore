@@ -20,3 +20,7 @@ Thumbs.db
 
 # Agent state
 .agent_task_state.md
+
+# Python virtual environment
+.python-version
+
