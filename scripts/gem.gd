@@ -106,8 +106,9 @@ func animate_fall(target_y: float, duration: float) -> void:
 	Logger.debug("Gem.animate_fall", "Start: grid=(" + str(grid_x) + "," + str(grid_y) + ") from_y=" + str(position.y) + " to_y=" + str(target_y))
 	if tween:
 		tween.kill()
-	tween = create_tween().set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
-	tween.tween_property(self, "position:y", target_y, duration)
+	tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	# 使用 Vector2 動畫確保 X 軸不變
+	tween.tween_property(self, "position", Vector2(position.x, target_y), duration)
 	await tween.finished
 	Logger.debug("Gem.animate_fall", "Complete: final_y=" + str(position.y))
 

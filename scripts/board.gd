@@ -303,7 +303,8 @@ func drop_gems() -> Dictionary:
 				gems[new_y][x] = gem
 				gems[y][x] = null
 				gem.grid_y = new_y
-				drops[gem] = empty_spaces
+				# 保留當前視覺位置作為動畫起點，記錄目標 Y
+				drops[gem] = new_y * GEM_SIZE + board_offset.y
 				total_dropped += 1
 
 		for i in range(empty_spaces):
@@ -312,9 +313,11 @@ func drop_gems() -> Dictionary:
 			grid[new_y][x] = new_type
 			_create_gem(x, new_y, new_type)
 			var gem: Gem = gems[new_y][x]
-			var start_y := -GEM_SIZE * (i + 1)
-			gem.position = Vector2(x * GEM_SIZE, start_y) + board_offset
-			drops[gem] = new_y * GEM_SIZE
+			# 新寶石從畫面外上方開始
+			var start_y := board_offset.y - GEM_SIZE * (i + 1)
+			gem.position = Vector2(x * GEM_SIZE + board_offset.x, start_y)
+			# 記錄目標 Y
+			drops[gem] = new_y * GEM_SIZE + board_offset.y
 			total_new += 1
 
 	Logger.game_event("gems_dropped", {"existing_dropped": total_dropped, "new_spawned": total_new})
@@ -325,7 +328,8 @@ func animate_falling(drops: Dictionary) -> void:
 	for gem in drops:
 		if not Logger.assert_not_null("Board.animate_falling", gem, "gem"):
 			continue
-		var target_y: float = gem.grid_y * GEM_SIZE + board_offset.y
+		var target_y: float = drops[gem]
+		Logger.debug("Board.animate_falling", "Gem grid=(" + str(gem.grid_x) + "," + str(gem.grid_y) + ") falling to y=" + str(target_y))
 		await gem.animate_fall(target_y, Constants.FALL_DURATION)
 	Logger.game_event("falling_complete")
 

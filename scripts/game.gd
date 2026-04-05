@@ -210,7 +210,13 @@ func _process_matches(matches: Array) -> void:
 
 	AudioManager.play_match()
 	board.clear_hints()
+	
+	# 標記 grid 為空，供 drop_gems 計算掉落
+	board.remove_matches(matches)
+	# 執行消除動畫並釋放節點
 	await board.animate_removal(matches)
+	
+	Logger.game_event("removal_complete", {"count": matches.size()})
 
 	current_state = Constants.GameState.FALLING
 	state_changed.emit(current_state)

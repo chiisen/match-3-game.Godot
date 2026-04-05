@@ -5,7 +5,7 @@ const GEM_TYPES := 6
 
 const SWAP_DURATION := 0.2
 const REMOVE_DURATION := 0.3
-const FALL_DURATION := 0.3
+const FALL_DURATION := 0.4
 const HINT_DELAY := 5.0
 const TIMED_MODE_DURATION := 60
 
