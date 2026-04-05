@@ -19,11 +19,12 @@ config/icon="res://assets/images/gem1.png"
 
 AudioManager="*res://scripts/audio_manager.gd"
 Constants="*res://scripts/constants.gd"
+Logger="*res://scripts/logger.gd"
 
 [display]
 
 window/size/viewport_width=640
-window/size/viewport_height=480
+window/size/viewport_height=800
 window/size/resizable=false
 window/stretch/mode="canvas_items"
 

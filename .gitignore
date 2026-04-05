@@ -1,5 +1,9 @@
 # Godot-specific
 .godot/
+*.import
+
+# Screenshots (not part of development)
+images/
 
 # Build exports
 export/

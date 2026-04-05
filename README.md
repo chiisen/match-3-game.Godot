@@ -26,6 +26,10 @@
    npm install -g @coding-solo/godot-mcp
    ```
 
+   > ⚠️ **重要**：如果直接執行 `npx @coding-solo/godot-mcp` 會提示確認（需手動輸入 `y`）。
+   > 在 VS Code 等終端機中可能因 `Ctrl+F` 快捷鍵衝突而無法輸入。
+   > **解法**：加上 `-y` 參數自動確認：`npx -y @coding-solo/godot-mcp`
+
 2. **確認 Godot 路徑：**
    本專案預設 Godot 安裝在 `D:\Godot\4.2.2\Godot_v4.2.2-stable_win64.exe`
    
