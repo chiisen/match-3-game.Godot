@@ -1,0 +1,22 @@
+# Godot-specific
+.godot/
+
+# Build exports
+export/
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary
+*.tmp
+*.bak
+
+# Agent state
+.agent_task_state.md
