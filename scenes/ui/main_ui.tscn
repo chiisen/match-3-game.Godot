@@ -1,0 +1,183 @@
+[gd_scene load_steps=3 format=3 uid="uid://main_ui_scene"]
+
+[ext_resource type="Script" path="res://scripts/ui_controller.gd" id="1_ui"]
+[ext_resource type="VideoStream" path="res://assets/videos/cheer_video.tres" id="2_video"]
+
+[node name="UIController" type="CanvasLayer"]
+script = ExtResource("1_ui")
+
+[node name="MainUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VideoPlayer" type="VideoStreamPlayer" parent="MainUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -240.0
+offset_right = 160.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+stream = ExtResource("2_video")
+autoplay = false
+loop = true
+
+[node name="TopPanel" type="PanelContainer" parent="MainUI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 80.0
+grow_horizontal = 2
+
+[node name="VBox" type="VBoxContainer" parent="MainUI/TopPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ScoreLabel" type="Label" parent="MainUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 10.0
+offset_right = 100.0
+offset_bottom = 40.0
+grow_horizontal = 2
+text = "分數: 0"
+horizontal_alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="MainUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 40.0
+offset_right = 100.0
+offset_bottom = 70.0
+grow_horizontal = 2
+text = "最高: 0"
+horizontal_alignment = 1
+
+[node name="ChainLabel" type="Label" parent="MainUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -180.0
+offset_right = 60.0
+offset_bottom = -150.0
+grow_horizontal = 2
+text = "連鎖 x2"
+horizontal_alignment = 1
+
+[node name="TimerLabel" type="Label" parent="MainUI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 40.0
+grow_horizontal = 0
+text = "時間: 60"
+horizontal_alignment = 1
+
+[node name="ModeButton" type="Button" parent="MainUI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -50.0
+offset_right = 120.0
+offset_bottom = -10.0
+grow_vertical = 0
+text = "經典模式"
+
+[node name="MuteButton" type="Button" parent="MainUI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -50.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "靜音"
+
+[node name="RestartButton" type="Button" parent="MainUI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -50.0
+offset_right = -130.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "重新開始"
+
+[node name="GameOverPanel" type="PanelContainer" parent="MainUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="MainUI/GameOverPanel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TitleLabel" type="Label" parent="MainUI/GameOverPanel/VBox"]
+layout_mode = 2
+text = "遊戲結束"
+horizontal_alignment = 1
+
+[node name="FinalScoreLabel" type="Label" parent="MainUI/GameOverPanel"]
+layout_mode = 2
+text = "最終分數: 0"
+horizontal_alignment = 1
+
+[node name="NewHighScoreLabel" type="Label" parent="MainUI/GameOverPanel"]
+visible = false
+layout_mode = 2
+text = "新紀錄!"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="MainUI/GameOverPanel"]
+layout_mode = 2
+text = "重新開始"
+
+[node name="PlayAgainButton" type="Button" parent="MainUI/GameOverPanel"]
+layout_mode = 2
+text = "再玩一次"
